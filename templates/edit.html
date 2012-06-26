@@ -1,0 +1,96 @@
+{% extends "admin_template.html" %}
+
+{% block head %}
+    {% if post.draft %}
+        <script type="text/javascript">
+            function SaveTick(){
+                issueSaveAjax({{ post.key.id }}, false);
+                setTimeout("SaveTick()", 50000)
+            }
+            $(document).ready(function(){
+                setTimeout("SaveTick();", 50000);
+            })
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+  <form id="fileupload" action="{{ upload_url }}" enctype="multipart/form-data" method="post">
+      
+        
+       <input type="file" name="file" multiple>
+       <span class="upload_text">Drop (multiple) photos anywhere on the page to load</span>
+       <input type="hidden" id="pageid" name="pageid" value="{{post.key.id}}">
+    </form>
+
+        <form accept-charset="UTF-8" action="" class="edit_post" id="edit_post_{{ post.key.id }}" method="post">
+            <div class="contain">
+
+                <div class="expandingArea text-title">
+                    <pre><span></span><br></pre>
+                    <textarea cols="40" id="post_title" name="post_title" placeholder="Title here" rows="1">{{ post.title }}</textarea>
+                </div>
+                <fieldset class="markdown">
+                    <div class="expandingArea text-content">
+                        <pre><span></span><br></pre>
+                        <textarea cols="40" id="post_content" name="post_content" placeholder="Write post here" rows="20">{{ post.text }}</textarea>
+                    </div>
+                </fieldset>
+            </div>
+            <div id="publish-bar">
+                <div class="contain">
+                    <div class="left">
+                        <a href="/admin/">&laquo; Admin</a>
+                        <a href="/admin/delete/{{post.key.id }}" class="delete-bar" data-confirm="Are you sure?" rel="nofollow">Delete</a>
+                    </div>
+                    <div class="right">
+                        <label for="post_draft">Draft</label>
+                        <input name="post_draft" type="hidden" value="0" /><input id="post_draft" name="post_draft" type="checkbox" value="1" {% if post.draft %}checked{% endif %} />
+                        {% if post.draft %}
+                            <a href="#" onclick="issueSaveAjax({{ post.key.id }}, true); return false;" target="_blank">Preview</a>
+                        {% else %}
+                            <a href="/{{ post.key.id }}" target="_blank">View live</a>
+                        {% endif %}
+                        <input name="commit" type="submit" value="Save" target="_blank"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+
+<script src="/static/js/jquery.ui.widget.js"></script>
+<script src="/static/js/jquery.fileupload.js"></script>
+<script>
+$(function () {
+	var uploadUrl = "{{upload_url}}";
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        url: uploadUrl,
+
+            drop: function (e, data) {
+        $('.upload_text').text('Loading photo...').css('color', 'red');
+        $('body').css('background-color', 'grey');
+    },
+        done: function (e, data) {
+                $('body').css('background-color', '');
+
+        	//alert('here');
+        	$.each(data.result, function (i,d) {
+
+        		$('#post_content').append(d['text']);
+        		uploadUrl = d['uploadUrl'];
+
+        	});
+
+        },
+        always: function() {
+                        $('body').css('background-color', '');
+
+                	$('.upload_text').text('Drop (multiple) photos anywhere on the page to load').css('color', '');
+
+        	//$('#remove_after_post').remove();
+        }
+    });
+});
+</script>
+{% endblock %}

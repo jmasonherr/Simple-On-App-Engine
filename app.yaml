@@ -1,0 +1,33 @@
+application: biggerfastermoar
+version: main
+runtime: python27
+api_version: 1
+threadsafe: true
+
+builtins:
+- deferred: on
+
+#libraries:
+#- name: PIL
+#  version: latest
+#- name: django
+#  version: 1.2
+
+handlers:
+
+
+- url: /static
+  static_dir: static
+
+- url: /(favicon\.ico|robots\.txt)
+  static_files: static/\1
+  upload: static/(.*)
+  expiration: '1d'
+
+- url: /admin.*
+  script: admin.application
+  login: admin
+
+- url: /.*
+  script: main.application
+  

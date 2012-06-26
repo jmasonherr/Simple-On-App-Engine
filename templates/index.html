@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ BLOG_TITLE }}{% endblock %}
+
+{% block content %}
+
+    {% for post in posts %}
+        <article id="post-{{ post.key.id }}">
+            <h2>
+            	<a href="/{{post.slug}}" class="no-link title">{{ post.title }}</a>
+            </h2>
+            
+            <section class="content">
+              {% autoescape off %}   {{ post.htmltext|truncatewords:60 }} {% endautoescape %} 
+              
+			</section>
+
+		</article>
+
+    {% endfor %}
+
+   <footer id="paginate">
+
+
+    {% if next_page > 1 %}
+    
+            <a href="/page/{{prev_page}}" class="back_to_blog">&larr;&nbsp;&nbsp;&nbsp;Previous</a>
+    {% endif %}
+    {% if more_entries %}
+            <a href="/page/{{next_page}}" class="back_to_blog">Next&nbsp;&nbsp;&nbsp;&rarr;</a>
+    {% endif %}
+    
+                {% if is_admin %}
+                  <a  class="back_to_blog" href="/admin/edit/{{post.key.id }}">&nbsp;&nbsp;&nbsp;Edit</a>
+            {% endif %}
+    </footer>
+
+{% endblock %}

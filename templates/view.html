@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ post.title }} - {{ BLOG_TITLE }}{% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+  <header>
+    <h1>{{ BLOG_TITLE }}'s Blog</h1>
+    <h3 class="date">Posted {{ post.created_at }}&nbsp;&nbsp;&nbsp;<small>{{post.views}} views</small></h3>
+  </header>
+        <article id="post-{{ post.key.id }}">
+            <h2>
+            	<a href="/{{post.slug}}" class="no-link title">{{ post.title }}</a>
+            </h2>
+            
+            <section class="content">
+              {% autoescape off %}   {{ post.htmltext }} {% endautoescape %} 
+              
+			</section>
+
+
+		</article>
+
+
+   <footer id="paginate">
+
+    <a href="/" class="back_to_blog">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
+       	            {% if is_admin %}
+                    <a class="back_to_blog" href="/admin/edit/{{post.key.id }}">&nbsp;&nbsp;&nbsp;Edit</a>
+            {% endif %}
+    </footer>
+
+{% endblock %}
