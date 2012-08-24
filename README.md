@@ -22,15 +22,15 @@ To **resize an image, add '=sXX' to the end** of the source url
 For example, the following image:
 
 ### Normal ###
-http://lh6.ggpht.com/q4mdXHDOOVQpgm21hUcBrcIHKA_3Mn7OIRyUO63y9KuVhYa9H5cV08a3kJWznB6CII0dqSPGfxhvMe6pCIO884M4uNFoT3g
+http://...NFoT3g
 ![Largest](http://lh6.ggpht.com/q4mdXHDOOVQpgm21hUcBrcIHKA_3Mn7OIRyUO63y9KuVhYa9H5cV08a3kJWznB6CII0dqSPGfxhvMe6pCIO884M4uNFoT3g "Normal")
 
 ### Medium ###
-http://lh6.ggpht.com/q4mdXHDOOVQpgm21hUcBrcIHKA_3Mn7OIRyUO63y9KuVhYa9H5cV08a3kJWznB6CII0dqSPGfxhvMe6pCIO884M4uNFoT3g=**s200**
+http://...NFoT3g=**s200**
 ![Medium](http://lh6.ggpht.com/q4mdXHDOOVQpgm21hUcBrcIHKA_3Mn7OIRyUO63y9KuVhYa9H5cV08a3kJWznB6CII0dqSPGfxhvMe6pCIO884M4uNFoT3g=s200 "medium")
 
 ### Small ###
-http://lh6.ggpht.com/q4mdXHDOOVQpgm21hUcBrcIHKA_3Mn7OIRyUO63y9KuVhYa9H5cV08a3kJWznB6CII0dqSPGfxhvMe6pCIO884M4uNFoT3g=**s100**
+http://...NFoT3g=**s100**
 ![Small](http://lh6.ggpht.com/q4mdXHDOOVQpgm21hUcBrcIHKA_3Mn7OIRyUO63y9KuVhYa9H5cV08a3kJWznB6CII0dqSPGfxhvMe6pCIO884M4uNFoT3g=s100 "small")
 
 `image from Wikipedia`
