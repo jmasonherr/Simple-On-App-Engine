@@ -21,7 +21,7 @@ def representsInt(d):
 
 class HomeHandler(CRequestHandler):
     def get(self, page=''):
-        q = Post.all().filter('draft =', False).order("created_at")
+        q = Post.all().filter('draft =', False).order("-created_at")
         posts = []
         more_entries = True
         prev_page = 1
@@ -55,14 +55,14 @@ class PostViewHandler(CRequestHandler):
 
 class PostViewSlugHandler(CRequestHandler):
     def get(self, id):
-        try:
-            post = db.Query(Post).filter('slug =', id.strip()).fetch(1)[0]
-            post.views = post.views + 1
-            post.put()
-            self.response.out.write(self.render_template("view.html",{'post':post, 'pid':post.key().id()}))
+        #try:
+		post = db.Query(Post).filter('slug =', id.strip()).fetch(1)[0]
+		post.views = post.views + 1
+		post.put()
+		self.response.out.write(self.render_template("view.html",{'post':post, 'pid':post.key().id()}))
 
-        except Exception:
-            self.redirect('/')
+        #except Exception:
+        #    self.redirect('/')
 
 
 
