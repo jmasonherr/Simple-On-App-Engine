@@ -99,7 +99,7 @@ application = webapp2.WSGIApplication([
                                 ("/(\d+)/*", PostViewHandler),
                                 ('/page/(\d+)', HomeHandler),
                                 ('/page/*', HomeHandler),
-                                ("/(\w+)/*", PostViewSlugHandler),
+                                ("/([\w\-].+)/*", PostViewSlugHandler),
                                 ("/feed.rss", FeedHandler),
                                 ('/.*', HomeHandler),
 
