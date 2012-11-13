@@ -24,19 +24,19 @@ class CRequestHandler(webapp2.RequestHandler):
 			url = users.create_login_url(self.request.uri)
 			url_linktext = 'Login'
 		base_template_vars = {
-                        'application_name': 'BIGGERFASTERMORE', 
+                        'application_name': 'my info', 
                         'users': users, 
                         'user' : users.GetCurrentUser(), 
                         'is_admin':users.is_current_user_admin(),
                         'url':url, 
                         'url_linktext': url_linktext,
-                        'ANALYTICS_ID': 'UA-30587223-1',
-                        'GITHUB_USERNAME': 'jmasonherr',
-                        'CONTACT_EMAIL': 'jmasonherr@gmail.com',
-                        'BLOG_TITLE' : 'BIGGERFASTERMORE',
+                        'ANALYTICS_ID': '',
+                        'GITHUB_USERNAME': '',
+                        'CONTACT_EMAIL': '',
+                        'BLOG_TITLE' : 'my blog title',
                         'TWITTER':'',
-                        'BLOG_TAGLINE' : 'Bringing you more bigger, faster',
-                        'BLOG_URL' : 'http//:www.biggerfastermore.com',
+                        'BLOG_TAGLINE' : 'and a great tagline',
+                        'BLOG_URL' : 'http://my.blog.url',
                         }
 		template_vars.update(base_template_vars)
 		template_path = self.get_template(template_name)
