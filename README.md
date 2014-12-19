@@ -1,5 +1,7 @@
 ### Super easy clean and simple. Svbtle-like blogging on Google App Engine ###
 
+[Demo](http://biggerfastermoar.appspot.com)
+
 This code is modified from Svbtle, [Simple](https://github.com/orf/simple), and the [jQuery drag and drop image uploader](http://blueimp.github.com/jQuery-File-Upload/)
 
 The code is HTML5, fairly minimal, and very simple.  Posts are written in markdown, and image handling is done by google's image cloud.  Download the repository, make your personalizations, load into App Engine Launcher, deploy and begin blogging.
